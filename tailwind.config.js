@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        logoFont: ["Henny Penny", "system-ui"]
+        logoFont: ["Henny Penny", "system-ui"],
+        main: ["Poppins", "sans-serif"]
       }
     },
   },
