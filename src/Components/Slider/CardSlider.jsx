@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import FoodCard from '../Card/FoodCard';
 
 const CardSlider = (options) => {
 
@@ -7,7 +8,7 @@ const CardSlider = (options) => {
     return (
         <div>
             {
-                cardType === "food" ? <div>food</div> : <div>cat</div>
+                cardType === "food" ? <FoodCard/> : <div>cat</div>
             }
         </div>
     );
