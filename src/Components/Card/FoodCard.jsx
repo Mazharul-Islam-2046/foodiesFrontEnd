@@ -7,7 +7,7 @@ const FoodCard = () => {
                 <div className="h-full w-full bg-[#00000040] px-3 pt-3">
                     <div className="flex justify-between items-center">
                         <p className="rounded-full bg-[#E21B70] px-4 py-1 text-sm font-semibold">Price 250tk</p>
-                        <div className="w-8 p-2 bg-white rounded-full">
+                        <div className="w-8 p-2 bg-white rounded-full cursor-pointer">
                             <img src="/heart.1024x924.png"></img>
                         </div>
                     </div>
