@@ -61,7 +61,17 @@ const CardSlider = (options) => {
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, FreeMode]}
         spaceBetween={0}
-        slidesPerView={3.5}
+        breakpoints={{
+          320: {
+            slidesPerView: 1.4,
+          },
+          768: {
+            slidesPerView: 2.8,
+          },
+          1024: {
+            slidesPerView: 3.5,
+          },
+        }}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
