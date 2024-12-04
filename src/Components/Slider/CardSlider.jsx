@@ -6,9 +6,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/virtual';
+import CategoryCard from "../Card/CategoryCard";
 
-const CardSlider = (options) => {
-  const cardType = options.cardType;
+const CardSlider = ({options}) => {
+  const cardType = options?.cardType;
   console.log(cardType);
   const foodItems = [
     {
@@ -71,6 +72,9 @@ const CardSlider = (options) => {
           1024: {
             slidesPerView: 3.5,
           },
+          1440: {
+            slidesPerView: 4.2,
+          },
         }}
         navigation
         pagination={{ clickable: true }}
@@ -79,14 +83,27 @@ const CardSlider = (options) => {
         onSlideChange={() => console.log("slide change")}
         freeMode={true}
       >
-        {foodItems.map((item, index) => (
+        {
+        cardType === "food" ?
+        foodItems.map((item, index) => (
           <SwiperSlide
             key={index}
-            className="pr-8 cursor-grab active:cursor-grabbing"
+            className="pr-8 py-2 cursor-grab active:cursor-grabbing"
           >
             <FoodCard />
           </SwiperSlide>
-        ))}
+        )) : 
+
+        foodItems.map((item, index) => (
+          <SwiperSlide
+            key={index}
+            className="pr-8 py-2 cursor-grab active:cursor-grabbing"
+          >
+            <CategoryCard/>
+          </SwiperSlide>
+        ))
+      
+      }
       </Swiper>
     </div>
   );

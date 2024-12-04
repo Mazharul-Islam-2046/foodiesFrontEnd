@@ -2,7 +2,7 @@
 
 const FoodCard = () => {
     return (
-        <div className="max-w-80 rounded-2xl overflow-hidden bg-white shadow-xl pb-3">
+        <div className="max-w-80 rounded-2xl overflow-hidden bg-white shadow-md pb-3">
             <div className="imagePart h-32 bg-[url('https://atanurrannagharrecipe.com/wp-content/uploads/2024/01/Kolkata-style-Mutton-Biriyani-Atanur-Rannaghar.jpg')] text-white bg-cover">
                 <div className="h-full w-full bg-[#00000040] px-3 pt-3">
                     <div className="flex justify-between items-center">
