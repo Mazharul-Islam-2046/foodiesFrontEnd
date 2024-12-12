@@ -1,7 +1,9 @@
 import Navbar from "../../Components/Navbar/Navbar"
+import ExploreDiverseMenu from "./Sections/ExploreDiverseMenu";
 import Hero from "./Sections/Hero";
 import MostPopularFood from "./Sections/MostPopularFood";
 import QuickBites from "./Sections/QuickBites";
+import Signup from "./Sections/Signup";
 import SpiceUp from "./Sections/SpiceUp";
 
 const Home = () => {
@@ -12,6 +14,8 @@ const Home = () => {
       <MostPopularFood/>
       <SpiceUp/>
       <QuickBites/>
+      <Signup/>
+      <ExploreDiverseMenu/>
     </div>
   );
 };
