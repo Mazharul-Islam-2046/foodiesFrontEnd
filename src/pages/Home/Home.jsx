@@ -1,3 +1,4 @@
+import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar"
 import ExploreDiverseMenu from "./Sections/ExploreDiverseMenu";
 import Hero from "./Sections/Hero";
@@ -16,6 +17,7 @@ const Home = () => {
       <QuickBites/>
       <Signup/>
       <ExploreDiverseMenu/>
+      <Footer/>
     </div>
   );
 };

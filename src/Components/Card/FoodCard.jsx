@@ -1,5 +1,4 @@
 
-
 const FoodCard = () => {
     return (
         <div className="max-w-80 rounded-2xl overflow-hidden bg-white shadow-md pb-3">
