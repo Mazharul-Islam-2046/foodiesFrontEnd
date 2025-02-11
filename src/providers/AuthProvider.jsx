@@ -49,9 +49,6 @@ export const AuthProvider = ({ children }) => {
         throw err;
       }
     };
-
-
-    userRegister("test@test.com", "123456", {name: "testUser", phone: "2", address: "2"})
   
     const userLogin = async (email, password) => {
       try {
