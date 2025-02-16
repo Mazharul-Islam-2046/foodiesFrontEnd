@@ -10,6 +10,7 @@ import {
   signInWithPopup 
 } from 'firebase/auth';// Your Firebase config
 import app from "@/firebase/firebase.config.js";
+import { usersApi } from "@/api/usersApi.js";
 
 
 
@@ -35,13 +36,23 @@ export const AuthProvider = ({ children }) => {
         const firebaseUser = userCredential.user;
   
         // Send registration data to your backend
-        const response = await api.post('/users/auth/register', {
+        // const response = await api.post('/users/auth/register', {
+        //   name: additionalData.name,
+        //   email: firebaseUser.email,
+        //   password: password, // Your backend will hash this
+        //   phone: additionalData.phone,
+        //   address: additionalData.address
+        // });
+
+        const response = await usersApi.register(
+          {
           name: additionalData.name,
           email: firebaseUser.email,
           password: password, // Your backend will hash this
           phone: additionalData.phone,
           address: additionalData.address
-        });
+          }
+        )
   
         return response.data;
       } catch (err) {
@@ -57,10 +68,10 @@ export const AuthProvider = ({ children }) => {
         const firebaseUser = userCredential.user;
   
         // Get JWT from your backend
-        const response = await api.post('/users/auth/login', {
+        const response = await usersApi.login({
           email: firebaseUser.email,
-          password: password
-        });
+          password
+        })
   
         // Store tokens
         const { accessToken, refreshToken, user: serverUser } = response.data.data;
@@ -71,7 +82,10 @@ export const AuthProvider = ({ children }) => {
         setUser(serverUser);
   
         return response.data;
-      } catch (err) {
+      } 
+      
+      // Error Handling
+      catch (err) {
         setError(err.response?.data?.message || 'Login failed');
         throw err;
       }
@@ -170,6 +184,9 @@ export const AuthProvider = ({ children }) => {
   
       return () => api.interceptors.request.eject(interceptor);
     }, []);
+
+
+    
   
     const authContextValue = {
       user,

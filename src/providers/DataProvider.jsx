@@ -1,6 +1,6 @@
-import {api} from "../api/axiosInstance";
 import { createContext, useState } from "react";
 import PropTypes from "prop-types";
+import { menuApi } from "@/api/menuApi";
 
 export const DataContext = createContext(null)
 
@@ -12,10 +12,10 @@ const DataProvider = ({children}) => {
 
 
 
-    const getAllMenu = async () => {
+    const getAllMenu = async (page, limit) => {
         try {
-            const response = await api.get('/menuItems/getAllMenuItems')
-            
+            const response = await menuApi.getAllMenuItems(page, limit);
+
             setAllMenu(response.data.data);
         } catch (err) {
             console.error(err);
@@ -24,13 +24,9 @@ const DataProvider = ({children}) => {
 
 
 
-    const getAllHealthyItems = async () => {
+    const getAllHealthyItems = async (page, limit) => {
         try {
-            const response = await api.get('/menuItems/filterMenuItems', {
-                params: {
-                    isHealthy: true
-                }
-            });
+            const response = await menuApi.getHealthyItems(page, limit);
             setAllHealthyItems(response.data);
         } catch (err) {
             console.error(err);
