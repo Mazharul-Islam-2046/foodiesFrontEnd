@@ -9,54 +9,54 @@ import 'swiper/css/virtual';
 import CategoryCard from "../Card/CategoryCard";
 
 const CardSlider = ({options}) => {
-  const cardType = options?.cardType;
-  console.log(cardType);
-  const foodItems = [
-    {
-      name: "Classic Cheeseburger",
-      category: "Fast Food",
-      price: 12.99,
-      imageUrl:
-        "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80",
-      description:
-        "Juicy beef patty with melted cheese, fresh lettuce, tomatoes, and special sauce",
-    },
-    {
-      name: "Margherita Pizza",
-      category: "Italian",
-      price: 15.99,
-      imageUrl:
-        "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&q=80",
-      description:
-        "Traditional pizza with fresh mozzarella, tomatoes, and basil on a crispy crust",
-    },
-    {
-      name: "Chicken Tikka Masala",
-      category: "Indian",
-      price: 16.99,
-      imageUrl:
-        "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80",
-      description: "Tender chicken in a rich, creamy tomato-based curry sauce",
-    },
-    {
-      name: "Sushi Roll Platter",
-      category: "Japanese",
-      price: 24.99,
-      imageUrl:
-        "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&q=80",
-      description:
-        "Assorted fresh sushi rolls including California, Spicy Tuna, and Rainbow rolls",
-    },
-    {
-      name: "Caesar Salad",
-      category: "Salads",
-      price: 10.99,
-      imageUrl:
-        "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&q=80",
-      description:
-        "Crisp romaine lettuce, parmesan cheese, croutons with classic Caesar dressing",
-    },
-  ];
+  console.log(options);
+  const { cardType, menuItems } = options;
+  // const foodItems = [
+  //   {
+  //     name: "Classic Cheeseburger",
+  //     category: "Fast Food",
+  //     price: 12.99,
+  //     imageUrl:
+  //       "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80",
+  //     description:
+  //       "Juicy beef patty with melted cheese, fresh lettuce, tomatoes, and special sauce",
+  //   },
+  //   {
+  //     name: "Margherita Pizza",
+  //     category: "Italian",
+  //     price: 15.99,
+  //     imageUrl:
+  //       "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&q=80",
+  //     description:
+  //       "Traditional pizza with fresh mozzarella, tomatoes, and basil on a crispy crust",
+  //   },
+  //   {
+  //     name: "Chicken Tikka Masala",
+  //     category: "Indian",
+  //     price: 16.99,
+  //     imageUrl:
+  //       "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80",
+  //     description: "Tender chicken in a rich, creamy tomato-based curry sauce",
+  //   },
+  //   {
+  //     name: "Sushi Roll Platter",
+  //     category: "Japanese",
+  //     price: 24.99,
+  //     imageUrl:
+  //       "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&q=80",
+  //     description:
+  //       "Assorted fresh sushi rolls including California, Spicy Tuna, and Rainbow rolls",
+  //   },
+  //   {
+  //     name: "Caesar Salad",
+  //     category: "Salads",
+  //     price: 10.99,
+  //     imageUrl:
+  //       "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&q=80",
+  //     description:
+  //       "Crisp romaine lettuce, parmesan cheese, croutons with classic Caesar dressing",
+  //   },
+  // ];
   return (
     <div>
       <Swiper
@@ -85,16 +85,16 @@ const CardSlider = ({options}) => {
       >
         {
         cardType === "food" ?
-        foodItems.map((item, index) => (
+        menuItems.map((item, index) => (
           <SwiperSlide
             key={index}
             className="pr-8 py-2 cursor-grab active:cursor-grabbing"
           >
-            <FoodCard />
+            <FoodCard key={item._id} item={item} />
           </SwiperSlide>
         )) : 
 
-        foodItems.map((item, index) => (
+        menuItems.map((item, index) => (
           <SwiperSlide
             key={index}
             className="pr-8 py-2 cursor-grab active:cursor-grabbing"
