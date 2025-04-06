@@ -9,8 +9,7 @@ import 'swiper/css/virtual';
 import CategoryCard from "../Card/CategoryCard";
 
 const CardSlider = ({options}) => {
-  console.log(options);
-  const { cardType, menuItems } = options;
+  const { cardType, menuItems, isFetchingNextPage, hasNextPage, fetchNextPage } = options;
   // const foodItems = [
   //   {
   //     name: "Classic Cheeseburger",
@@ -57,6 +56,15 @@ const CardSlider = ({options}) => {
   //       "Crisp romaine lettuce, parmesan cheese, croutons with classic Caesar dressing",
   //   },
   // ];
+
+  const handleReachEnd = () => {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+      console.log("Handled reach end");
+    }
+  };
+
+
   return (
     <div>
       <Swiper
@@ -79,19 +87,22 @@ const CardSlider = ({options}) => {
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
         freeMode={true}
+        onReachEnd={handleReachEnd}
       >
         {
         cardType === "food" ?
-        menuItems.map((item, index) => (
-          <SwiperSlide
-            key={index}
-            className="pr-8 py-2 cursor-grab active:cursor-grabbing"
+        menuItems.map((menuItem) => (
+          menuItem.map((item, index) => (
+            <SwiperSlide
+          key={index}
+          className="pr-8 py-2 cursor-grab active:cursor-grabbing"
           >
-            <FoodCard key={item._id} item={item} />
+              <FoodCard item={item}/>
           </SwiperSlide>
+          ))
+          
         )) : 
 
         menuItems.map((item, index) => (
@@ -99,7 +110,7 @@ const CardSlider = ({options}) => {
             key={index}
             className="pr-8 py-2 cursor-grab active:cursor-grabbing"
           >
-            <CategoryCard/>
+            <CategoryCard />
           </SwiperSlide>
         ))
       
